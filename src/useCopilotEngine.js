@@ -87,39 +87,30 @@ export const useCopilotEngine = (initialPatient = null) => {
     return () => clearInterval(interval);
   }, [isCloudEnabled, cloudUrl, patient?.role, patient?.patientId, patient?.lastSync]);
 
-  // Push local real patient to cloud ONLY initially or when we make an explicit action
-  useEffect(() => {
-    if (!isCloudEnabled || !cloudUrl || !patient || patient.role !== 'paciente' || !patient.patientId) return;
-
-    // Solo empujamos si recién creamos el registro o no se ha sincronizado
-    if (patient.lastSync) return;
-
-    const pushData = async () => {
-      try {
-        const payload = {
-          id: patient.patientId,
-          name: patient.name,
-          phone: patient.phone,
-          appointmentTime: patient.appointmentTime || 'N/A',
-          currentArea: patient.studies && patient.studies.length > 0 ? patient.studies[patient.activeStudyIndex || 0].steps.find(s => s.status === 'current' || s.status === 'pending')?.areaId || 'recep' : 'recep',
-          status: 'waiting',
-          studyNames: patient.studyNamesDisplay || 'Estudio Estándar',
-          studiesList: patient.studies ? patient.studies.filter(s => s.id !== 'final-results').map(s => s.name) : [],
-          lastUpdate: Date.now(),
-          fullState: patient
-        };
-        await fetch(`${cloudUrl}/patients/${patient.patientId}.json`, {
-          method: 'PUT',
-          body: JSON.stringify(payload)
-        });
-        setPatient(prev => ({ ...prev, lastSync: Date.now() }));
-      } catch (err) {
-        console.error("Cloud push failed:", err);
-      }
-    };
-
-    pushData();
-  }, [patient, isCloudEnabled, cloudUrl]);
+  const registerPatientToCloud = async (newPatient) => {
+    if (!isCloudEnabled || !cloudUrl || !newPatient || newPatient.role !== 'paciente' || !newPatient.patientId) return;
+    try {
+      const payload = {
+        id: newPatient.patientId,
+        name: newPatient.name,
+        phone: newPatient.phone,
+        appointmentTime: newPatient.appointmentTime || 'N/A',
+        currentArea: newPatient.studies && newPatient.studies.length > 0 ? newPatient.studies[newPatient.activeStudyIndex || 0].steps.find(s => s.status === 'current' || s.status === 'pending')?.areaId || 'recep' : 'recep',
+        status: 'waiting',
+        studyNames: newPatient.studyNamesDisplay || 'Estudio Estándar',
+        studiesList: newPatient.studies ? newPatient.studies.filter(s => s.id !== 'final-results').map(s => s.name) : [],
+        lastUpdate: Date.now(),
+        fullState: newPatient
+      };
+      await fetch(`${cloudUrl}/patients/${newPatient.patientId}.json`, {
+        method: 'PUT',
+        body: JSON.stringify(payload)
+      });
+      setPatient(prev => ({ ...prev, lastSync: Date.now() }));
+    } catch (err) {
+      console.error("Cloud push failed:", err);
+    }
+  };
 
   const movePatient = (id, newArea) => {
     if (isCloudEnabled && cloudUrl) {
@@ -277,6 +268,7 @@ export const useCopilotEngine = (initialPatient = null) => {
     notifyNextPatient,
     setCloudUrl,
     isCloudEnabled,
+    registerPatientToCloud,
     logout: () => { 
       setPatient(null); 
       localStorage.removeItem('copilot_patient'); 

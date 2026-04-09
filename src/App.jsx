@@ -9,7 +9,7 @@ import { useCopilotEngine } from './useCopilotEngine';
 
 function App() {
   const [theme, setTheme] = useState('light');
-  const { patient, allPatients, clinicLoad, movePatient, finishConsultation, notifyNextPatient, setPatient, logout, setCloudUrl, isCloudEnabled } = useCopilotEngine();
+  const { patient, allPatients, clinicLoad, movePatient, finishConsultation, notifyNextPatient, setPatient, logout, setCloudUrl, isCloudEnabled, registerPatientToCloud } = useCopilotEngine();
 
   useEffect(() => { 
     document.documentElement.setAttribute('data-theme', theme); 
@@ -25,7 +25,7 @@ function App() {
       ]
     }));
 
-    setPatient({
+    const updatedPatient = {
       ...patient,
       role: 'paciente',
       patientId: `SD-${Math.floor(Math.random()*9000)+1000}`,
@@ -38,7 +38,10 @@ function App() {
       queuePosition: Math.floor(Math.random() * 8) + 1,
       appointmentTime: bookingData.time || '09:00 AM',
       studyNamesDisplay: studyNames
-    });
+    };
+
+    setPatient(updatedPatient);
+    registerPatientToCloud(updatedPatient);
   };
 
   const renderView = () => {
