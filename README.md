@@ -1,10 +1,20 @@
-# MedPilot AI (Anteriormente Salud Digna Copilot) 💚
+# MedPilot AI
+### Un Proyecto de: **INGESAURIOS**
+
+**Integrantes del Equipo:**
+* Jean Carlos Chan Noh
+* Eduardo Cabrera Rendon
+* Rodrigo Criollo Castillo
+* Leonardo Colli Arroyo
+* Fernando Sabido Quijano
+
+---
 
 MedPilot AI es un sistema de gestión clínica inteligente en tiempo real, diseñado para optimizar el flujo de pacientes, la monitorización pasiva del personal clínico (Staff) y la asignación dinámica en consultorios médicos. El sistema cuenta con 3 portales interconectados impulsados por React y Firebase para crear una experiencia omnicanal ininterrumpida.
 
 ---
 
-## 🌟 Características Principales
+## Características Principales
 
 *   **Sincronización en Tiempo Real:** Todos los dispositivos operan en sincronía a través de Firebase Realtime Database para enviar a los pacientes de un área médica a otra sin fricción.
 *   **Recorridos Multi-Estudio:** Los pacientes pueden programar múltiples estudios consecutivos (ej. Laboratorio, Rayos X, Nutrición). La IA enruta automáticamente al paciente a su siguiente destino al ser liberado sin mandarlo a resultados prematuramente.
@@ -14,7 +24,7 @@ MedPilot AI es un sistema de gestión clínica inteligente en tiempo real, dise�
 
 ---
 
-## 🛠️ Tecnologías Empleadas
+## Tecnologías Empleadas
 
 *   **Frontend:** React.js, Vite
 *   **Gestión de Estados:** React Hooks avanzados (`useState`, `useEffect`) y `localStorage` para hidratación pre-despliegue y protección anti-deslogueos.
@@ -23,7 +33,7 @@ MedPilot AI es un sistema de gestión clínica inteligente en tiempo real, dise�
 
 ---
 
-## 🧑‍💻 Roles del Sistema
+## Roles del Sistema
 
 El sistema categoriza tres perfiles principales al momento de iniciar sesión:
 
@@ -33,7 +43,7 @@ El sistema categoriza tres perfiles principales al momento de iniciar sesión:
 
 ---
 
-## 🚀 Cómo Iniciar el Proyecto Localmente
+## Cómo Iniciar el Proyecto Localmente
 
 Para iniciar labores de desarrollo o despliegues de la aplicación:
 
@@ -77,7 +87,7 @@ Para poder usar la plataforma desde tu teléfono y la laptop médica al mismo ti
 
 ---
 
-## 🧹 Herramientas de Mantenimiento
+## Herramientas de Mantenimiento
 
 *   **Reinicio Total de Pacientes (Purga Inmediata):** 
     Si durante el ensayo los datos del Firebase se corrompen, están atascados en memoria de red, o deseas borrar todos los registros con un solo clic, lanza el siguiente comando en tu Powershell:
