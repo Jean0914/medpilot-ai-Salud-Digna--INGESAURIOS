@@ -1,0 +1,170 @@
+/* --- LAYOUT BASE PC --- */
+.patient-view {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 25px;
+  align-items: start;
+}
+
+/* --- TARJETA DE ESTADO PC --- */
+.card-horizontal-status {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  margin-bottom: 25px;
+  background: white;
+  border-radius: 20px;
+  border-left: 8px solid #00d084;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.status-left { flex: 1; }
+
+.queue-number-green {
+  font-size: 5rem;
+  font-weight: 900;
+  color: #00d084;
+  line-height: 1;
+}
+
+.queue-text {
+  font-weight: 800;
+  color: #1e293b;
+  margin: 5px 0;
+  font-size: 1.1rem;
+}
+
+.vertical-divider {
+  width: 1px;
+  height: 100px;
+  background: #e2e8f0;
+  margin: 0 40px;
+}
+
+.status-right { text-align: center; }
+
+.ticket-label-top {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 2px;
+}
+
+/* EL TICKET ESTILO MEDALLA */
+.ticket-badge-clean {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #1e293b;
+  margin-top: 5px;
+  background: white;
+  border: 2px solid #cbd5e1;
+  padding: 10px 25px;
+  border-radius: 16px;
+  display: inline-block;
+}
+
+/* CÁPSULA DEL CONTADOR */
+.next-move-timer {
+  margin-top: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #f0fff4;
+  border-radius: 50px;
+  border: 1px solid #c6f6d5;
+  white-space: nowrap;
+  color: #065f46;
+}
+
+.next-move-timer strong { color: #00d084; font-weight: 800; }
+
+/* PANEL LATERAL */
+.centered-panel-title {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 25px;
+}
+
+.whatsapp-btn {
+  width: 100%;
+  padding: 18px;
+  background: #25d366;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+/* --- DISEÑO MÓVIL (BLINDADO) --- */
+@media (max-width: 480px) {
+  .layout-grid { grid-template-columns: 1fr; }
+
+  .card-horizontal-status {
+    flex-direction: column;
+    background: #ffffff !important; /* FORZAMOS FONDO BLANCO */
+    padding: 35px 20px;
+    border-top: 8px solid #00d084; /* BORDE VERDE ARRIBA */
+    border-left: none;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+
+  /* FORZAMOS QUE LOS TEXTOS NO SEAN BLANCOS */
+  .queue-number-green {
+    color: #00d084 !important;
+    font-size: 6rem;
+  }
+
+  .queue-text {
+    color: #475569 !important; /* GRIS OSCURO */
+    font-size: 1rem;
+  }
+
+  .ticket-label-top {
+    color: #94a3b8 !important;
+    margin-top: 15px;
+    display: block;
+  }
+
+  .ticket-badge-clean {
+    color: #1e293b !important; /* TEXTO OSCURO */
+    background: white !important;
+    border: 2px solid #cbd5e1 !important;
+    font-size: 2.2rem;
+    padding: 12px 20px;
+    margin-top: 8px;
+    width: auto;
+    display: inline-block;
+  }
+
+  .next-move-timer {
+    background: #f0fff4 !important;
+    color: #065f46 !important;
+    border: 1px solid #c6f6d5 !important;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+  }
+
+  .next-move-timer strong { color: #00d084 !important; }
+
+  .vertical-divider {
+    width: 80%;
+    height: 1px;
+    background: #e2e8f0;
+    margin: 25px auto;
+  }
+}

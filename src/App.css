@@ -1,0 +1,132 @@
+/* --- HEADER PROFESIONAL --- */
+.main-header {
+  display: flex;
+  justify-content: space-between; /* Manda el logout a la derecha */
+  align-items: center;
+  padding: 15px 40px;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 25px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.brand-logo {
+  font-size: 2rem;
+}
+
+.brand-info h1 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0;
+  color: #1a202c;
+  line-height: 1;
+}
+
+.brand-tagline {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* BOTÓN CERRAR SESIÓN MEJORADO */
+.logout-header-btn {
+  background: #fff5f5;
+  color: #e53e3e;
+  border: 1px solid #feb2b2;
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-header-btn:hover {
+  background: #e53e3e;
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Leyenda de datos del paciente */
+.patient-legend-data {
+  padding: 0 40px;
+  margin-bottom: 30px;
+}
+
+.patient-legend-data h2 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin: 0;
+  color: #1a202c;
+}
+
+.patient-sub-info {
+  font-size: 1rem;
+  color: #718096;
+  margin-top: 5px;
+}
+
+/* Punto de estado para la leyenda final */
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background: #00d084;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+[data-theme='dark'] .brand-info h1 { color: white; }
+[data-theme='dark'] .logout-header-btn { background: rgba(229, 62, 62, 0.1); }
+
+/* App.css */
+
+.main-header {
+  padding: 10px 20px; /* Reducimos padding en móviles */
+}
+
+@media (max-width: 768px) {
+  .header-left .brand-info h1 {
+    font-size: 1.1rem; /* Texto más pequeño en móvil */
+  }
+  
+  .brand-logo {
+    font-size: 1.5rem;
+  }
+
+  .patient-legend-data h2 {
+    font-size: 1.5rem; /* Nombre del paciente más pequeño */
+  }
+  
+  .patient-sub-info {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-viewport {
+    padding: 10px 15px; /* Menos espacio a los lados para ganar pantalla */
+  }
+
+  .patient-legend-data h2 {
+    font-size: 1.4rem; /* Nombre más legible */
+    margin-bottom: 2px;
+  }
+
+  .patient-sub-info {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+}
